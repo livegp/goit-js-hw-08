@@ -1,13 +1,11 @@
-// Add imports above this line
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 import { galleryItems } from './gallery-items';
-// Change code below this line
+
 const gallery = document.querySelector('.gallery');
 const galleryMarkup = createGalleryMarkup(galleryItems);
 
 gallery.insertAdjacentHTML('beforeend', galleryMarkup);
-gallery.addEventListener('click', onGalleryClick);
 
 function createGalleryMarkup(galleryItems) {
     return galleryItems
@@ -34,12 +32,3 @@ const box = new SimpleLightbox('.gallery a', {
     scrollZoom: false,
     close: false,
 });
-
-function onGalleryClick(event) {
-    event.preventDefault();
-    if (event.target.nodeName !== 'IMG') {
-        return;
-    }
-    box.open(event.target.parentNode.href);
-}
-console.log(galleryItems);
